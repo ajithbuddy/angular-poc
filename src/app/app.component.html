@@ -1,0 +1,44 @@
+<!-- structure directives starts -->
+
+<!-- <div *ngIf = "showUsers">
+  <h1 *ngFor = "let user of users; let i = index" [ngClass]="{'firstclass': i == 1}" [ngStyle] = "{'color': i == 0 ? 'blue' : 'red' }" (click)="selectedUser = user.name">The username is {{user.name}}</h1>
+</div>
+<div [ngSwitch] = "selectedUser">
+  <h1 *ngSwitchCase = "'ram'">ram from switch case</h1>
+  <h1 *ngSwitchCase = "'aji'">aji from switch case</h1>
+  <h1 *ngSwitchCase = "'suji'">suji from switch case</h1>
+  <h1 *ngSwitchDefault>default case</h1>
+</div> -->
+
+<!-- directives ends -->
+
+
+<form  #myForm="ngForm">
+  <textarea name="myText" (keyup)="createDocFile($event.keyCode)" #htmlData ngModel rows="15" style = "width:400px;margin:10px;"></textarea><br/>
+  <!-- <input name="fileName" ngModel> -->
+  <button type="submit" (click)="openPopup()">Download</button>
+</form>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Download</h4>
+      </div>
+      <div class="modal-body">
+        <p>Download the content in the below format</p>
+        <p><button type="button" (click)="generatePDF()"  class="btn btn-danger">PDF</button></p>
+        <p><button  type="button" (click)="onSubmit('application/vnd.openxmlformats-officedocument.wordprocessingml.document')" class="btn btn-primary">Word Docx</button></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
